@@ -1,0 +1,77 @@
+spring:
+  # 默认环境
+  profiles:
+    active: dev
+  mvc:
+    path match:
+      matching-strategy: ant_path_matcher
+    format:
+      date-time: yyyy-MM-dd HH:mm:ss
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/jujiao_yuan
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      # 初始化时建立物理连接的个数
+      initial-size: 5
+      # 连接池的最小空闲数量
+      min-idle: 5
+      # 连接池最大连接数量
+      max-active: 20
+      # 获取连接时最大等待时间，单位毫秒
+      max-wait: 60000
+  session:
+    timeout: 2592000
+    store-type: redis
+  redis:
+    database: 1
+    host: localhost
+    port: 6379
+    timeout: 5000
+  jackson:
+    date-format: yyyy年MM月dd日 HH:mm:ss
+    timeZone: Asia/Shanghai
+server:
+  port: 8080
+  address: 0.0.0.0
+  servlet:
+    context-path: /api
+    session:
+      cookie:
+        max-age: 2592000
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: isDelete
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+#  腾讯云cos配置
+#cos:
+#  client:
+#    accessKey: XXX
+#    secretKey: xxx
+#    region: xxx
+#    bucket: xxx
+
+
+# 第三方登录配置 申请地址 https://uniqueker.top/
+#third:
+#  config:
+#    appId: xxxx
+#    appKey: xxxx
+#    redirectUrl: xxxx
+
+
+
+
+
+
+
+
+
